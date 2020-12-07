@@ -8,6 +8,10 @@ import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.videoio.VideoCapture;
 
+import java.io.IOException;
+
+import static org.opencv.imgcodecs.Imgcodecs.imread;
+
 public class Main {
 
     static{ nu.pattern.OpenCV.loadLocally(); }
@@ -19,11 +23,13 @@ public class Main {
         Mat img = new Mat();
         int frames = 0;
         long start = System.currentTimeMillis();
-        while(frames < 1000) {
+        KafkaFrames KF = new KafkaFrames();
+        while(frames < 100) {
             vc.read(img);
             frames++;
-            HighGui.imshow("Original Image", img);
-            HighGui.waitKey(1);
+            KF.writeFrame(img);
+            //HighGui.imshow("Original Image", img);
+            //HighGui.waitKey(1);
         }
         long end = System.currentTimeMillis();
         double time = (end - start) * 1.0 / 1000;
