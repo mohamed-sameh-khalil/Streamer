@@ -5,7 +5,7 @@ import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 
 public class Streamer {
-    static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
+    static{ nu.pattern.OpenCV.loadLocally(); }
 
     private VideoCapture vc;
     private Mat lastFrame;
