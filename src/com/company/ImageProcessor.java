@@ -56,11 +56,14 @@ public class ImageProcessor {
     }
 
 //  For Testing
-//    public static void main(String[] args) {
-//        Mat src = Imgcodecs.imread("lady.jfif");
+    public static void main(String[] args) {
+//        Mat src = Imgcodecs.imread("5.jpg");
 //        String s = matToString(src);
 //        Mat frame = stringToMat(s);
+//        Imgcodecs imageCodecs = new Imgcodecs();
+//        Mat matrix = imageCodecs.imread("1.jpg");
+//        imageCodecs.imwrite("size.jpg", matrix);
 //        HighGui.imshow("Original Image", frame);
 //        HighGui.waitKey(0);
-//    }
+    }
 }
