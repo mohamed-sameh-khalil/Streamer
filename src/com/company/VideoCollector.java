@@ -4,11 +4,9 @@ import com.company.interfaces.VideoHandler;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import static com.company.Config.SEPARATOR;
-import static com.company.Config.chunkTimeInMillis;
+import static com.company.Config.*;
 
 public class VideoCollector {
     public static class FrameStreamStopped extends RuntimeException{}
@@ -17,7 +15,7 @@ public class VideoCollector {
     private RedisFrames rf;
     private ArrayList<String> sMats;
 
-    private long lastTimeStamp = System.currentTimeMillis();
+    private long lastModdedTimeStamp = System.currentTimeMillis();
 
     private final String cameraIP;
     private final String cameraID;
@@ -36,8 +34,8 @@ public class VideoCollector {
                 processBatch();
             }
             try {
-                sMats.add(rf.getLastFrameForCamera(cameraIP, cameraID));
-                Utils.MilliWait(100);
+                addingAFrame();
+                Utils.FPSWait(fps);
             }
             catch (RedisFrames.FrameNotExist fne){
                 //TODO add an action to occur when multiple frames are missed
@@ -50,19 +48,25 @@ public class VideoCollector {
         if(sMats.isEmpty())throw new FrameStreamStopped();
         updateTimeStamp();
         videoHandler.WriteFrames(sMats,getFileName());
+        clearOldBatch();
+    }
+    private void addingAFrame(){
+        sMats.add(rf.getLastFrameForCamera(cameraIP, cameraID));
+    }
+    private void clearOldBatch(){
         sMats = new ArrayList<>();
     }
 
     private String getFileName(){
-        return cameraIP + SEPARATOR + cameraID + SEPARATOR + lastTimeStamp;
+        return cameraIP + SEPARATOR + cameraID + SEPARATOR + lastModdedTimeStamp;
     }
 
     private boolean enoughTimePassed(){
-        return System.currentTimeMillis() >= lastTimeStamp + chunkTimeInMillis;
+        return System.currentTimeMillis() >= lastModdedTimeStamp + chunkTimeInMillis;
     }
 
     private void updateTimeStamp(){
-        lastTimeStamp = (System.currentTimeMillis() / chunkTimeInMillis) * chunkTimeInMillis;
+        lastModdedTimeStamp = (System.currentTimeMillis() / chunkTimeInMillis) * chunkTimeInMillis;
     }
 
     public static void main(String[] args){
