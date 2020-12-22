@@ -1,6 +1,5 @@
 package com.company;
 
-import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 
@@ -9,15 +8,15 @@ public class Streamer {
 
     private VideoCapture vc;
     private Mat lastFrame;
-    private int fps;
+    private double fps;
 
-    public Streamer(String URL, int fps){
+    public Streamer(String URL, double fps){
         vc = new VideoCapture(URL);
         this.fps = fps;
     }
 
     public Streamer(String URL){
-        this(URL, 60);
+        this(URL, Config.fps);
     }
 
     public Mat getFrame(){
@@ -27,16 +26,6 @@ public class Streamer {
 
     public void stream(){
         Mat mat = getFrame();
-        wait(fps);
-    }
-
-    public void wait(int fps){
-        double time = 1000 * 1.0 / fps;
-        try {
-            Thread.sleep((long)time);
-        }
-        catch (InterruptedException ie){
-
-        }
+        Utils.FPSWait(fps);
     }
 }

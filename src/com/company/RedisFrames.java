@@ -6,22 +6,29 @@ import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 import redis.clients.jedis.Jedis;
 
+import static com.company.Config.*;
 
 public class RedisFrames {
+
+    static public class FrameNotExist extends RuntimeException { }
     private Jedis jedis;
     private String IP;
     private int port;
-    final private String SEPARATOR = "-";
     private int ExpirationTimeInSeconds;
 
-    RedisFrames(String IP, int port, int ExpirationTimeInSeconds){
+    public RedisFrames(){
+        this(RedisServerIP, RedisServerPort);
+    }
+
+    public RedisFrames(String IP, int port){
+        this(IP, port, 1);
+    }
+
+    public RedisFrames(String IP, int port, int ExpirationTimeInSeconds){
         this.IP = IP;
         this.port = port;
         this.ExpirationTimeInSeconds = ExpirationTimeInSeconds;
         jedis = new Jedis(IP, port);
-    }
-    RedisFrames(String IP, int port){
-        this(IP, port, 1);
     }
 
     public void setLastFrameForCamera(Mat img, String cameraIP, String cameraID){
@@ -36,13 +43,12 @@ public class RedisFrames {
         return cameraIP + SEPARATOR + cameraID;
     }
 
-    public Mat getLastFrameForCamera(String cameraIP, String cameraID){
+    public String getLastFrameForCamera(String cameraIP, String cameraID) throws FrameNotExist{
         String key = getKeyForCamera(cameraIP,cameraID);
         if(jedis.exists(key)){
-            String strImg = jedis.get(key);
-            return ImageProcessor.stringToMat(strImg);
+            return jedis.get(key);
         }
-        return new Mat();//TODO signal somehow that there is no image
+        throw new FrameNotExist();
     }
     static{ nu.pattern.OpenCV.loadLocally(); }
     public static void main(String[] args){
@@ -50,7 +56,7 @@ public class RedisFrames {
         Mat src = Imgcodecs.imread("/home/darth/GP/darknet/predictions.jpg");
 
         rf.setLastFrameForCamera(src, "1", "1");
-        src = rf.getLastFrameForCamera("1", "1");
+        src = ImageProcessor.stringToMat(rf.getLastFrameForCamera("1", "1"));
 
         HighGui.imshow("Original Image", src);
         HighGui.waitKey();
