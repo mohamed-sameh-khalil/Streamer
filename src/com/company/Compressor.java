@@ -30,12 +30,15 @@ public class Compressor {
     }
     public void compress(String fileName, double fps){
         String oldFile = fileName + ORIGINALVIDEOEXTENSION;
-        String newFile = fileName + COMPRESSEDVIDEOEXTENSION;
+        String newFile = getCompressedFileName(fileName);
         FFmpegBuilder builder = getBuilder(oldFile, newFile, fps);
         executor.createJob(builder).run();
-
-        deleteFile(oldFile);
     }
+
+    public static String getCompressedFileName(String fileName){
+        return fileName + COMPRESSEDVIDEOEXTENSION;
+    }
+
     private FFmpegBuilder getBuilder(String oldFile, String newFile, double fps){
         return new FFmpegBuilder()
                 .setInput(oldFile)     // Filename, or a FFmpegProbeResult

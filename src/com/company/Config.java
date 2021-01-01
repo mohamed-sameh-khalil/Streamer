@@ -7,9 +7,16 @@ public class Config {
     public static final String SEPARATOR = "-";
 
     public static final String RedisServerIP = "127.0.0.1";
+    public static final int RedisServerPort = 6379;
+    public static final int DEFAULTEXPIRATIONSECONDS = 1;
+
     public static final String FFMPEGPATH = "/usr/bin/ffmpeg";
     public static final String FFPROBEPATH = "/usr/bin/ffprobe";
-    public static final int RedisServerPort = 6379;
+
+    public static final String DEFAULTCAMERAIP = "192.168.1.10";
+    public static final int DEFAULTCAMERAPORT = 8080;
+    public static final String DEFAULTCAMERAID = "1";
+
     public static final String ORIGINALVIDEOEXTENSION = ".avi";
     public static final String COMPRESSEDVIDEOEXTENSION = ".mp4";
 }

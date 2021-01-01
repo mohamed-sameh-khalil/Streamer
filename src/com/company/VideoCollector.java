@@ -70,12 +70,7 @@ public class VideoCollector {
     }
 
     public static void main(String[] args){
-
-
-        RedisFrames rf = new RedisFrames("127.0.0.1", 6379, 10000);
-        Mat src = Imgcodecs.imread("/home/darth/GP/darknet/predictions.jpg");
-        rf.setLastFrameForCamera(src, "1", "1");
-        VideoCollector videoCollector = new VideoCollector("1", "1");
+        VideoCollector videoCollector = new VideoCollector(DEFAULTCAMERAIP, DEFAULTCAMERAID);
         videoCollector.collect();
 
     }

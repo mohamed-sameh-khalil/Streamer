@@ -6,7 +6,6 @@ import org.opencv.videoio.VideoWriter;
 
 import java.util.ArrayList;
 
-import static com.company.Config.COMPRESSEDVIDEOEXTENSION;
 import static com.company.Config.ORIGINALVIDEOEXTENSION;
 
 public class VideoHandlerImp implements VideoHandler {
@@ -40,31 +39,38 @@ public class VideoHandlerImp implements VideoHandler {
             // Then delete the compressed file???
         }
 
-        public void combineFramesToCompressedVideo(){
+        private void combineFramesToCompressedVideo(){
             System.out.println("FPS: " + fps);
-
-            writeOriginalVideo();
-            System.out.println("wrote the file before compression");
+            writeUnCompressedVideo();
             compress();
-
-            System.out.println("Done");
-//            System.exit(0);
+            upload();
+            deleteTmpFiles();
         }
-        public void writeOriginalVideo(){
+        private void writeUnCompressedVideo(){
             //TODO make a constant preset frame size instead of depending on the first frame in the sequence??
             Size sz = ImageProcessor.stringToMat(sMats.get(0)).size();
             int fourcc = VideoWriter.fourcc('M','J','P','G');
-            String OriginalVideoFileName = processFileName(fileName);
+            String OriginalVideoFileName = getOriginalFileName(fileName);
             videoWriter = new VideoWriter(OriginalVideoFileName, fourcc, fps, sz);
             for(String sMat : sMats) {
                 videoWriter.write(ImageProcessor.stringToMat(sMat));
             }
             videoWriter.release();
         }
-        public void compress(){
+        private void compress(){
             Compressor.getInstance().compress(fileName, fps);
         }
-        public String processFileName(String fileName){
+
+        private void upload(){
+            S3Uploader.upload(fileName, Compressor.getCompressedFileName(fileName));
+        }
+
+        private void deleteTmpFiles(){
+            Utils.deleteFile(getOriginalFileName(fileName));
+            Utils.deleteFile(Compressor.getCompressedFileName(fileName));
+        }
+
+        public static String getOriginalFileName(String fileName){
             return fileName + ORIGINALVIDEOEXTENSION;
         }
     }
