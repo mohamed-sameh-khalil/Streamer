@@ -43,8 +43,8 @@ public class ImageProcessor {
             ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
             image = ImageIO.read(bis);
             bis.close();
-            File outputfile = new File("image.jpg");
-            ImageIO.write(image, "jpg", outputfile);
+            //File outputfile = new File("image.jpg");
+            //ImageIO.write(image, "jpg", outputfile);
         } catch (Exception e) {
             e.printStackTrace();
         }

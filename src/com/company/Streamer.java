@@ -27,6 +27,7 @@ public class Streamer {
 
         lastFrame = new Mat();
         this.fps = fps;
+        this.cameraIP = cameraIP;
         rf = RedisFrames.getDefaultRedisFrames();
     }
 
@@ -44,7 +45,7 @@ public class Streamer {
             readFrame();
             System.out.println(lastFrame.size());
             handleFrame();
-            Utils.FPSWait(fps);
+            //Utils.FPSWait(fps);
         }
     }
 

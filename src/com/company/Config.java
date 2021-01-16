@@ -1,7 +1,7 @@
 package com.company;
 
 public class Config {
-    public final static double fps = 24;
+    public final static double fps = 50;
     public final static double fpsDelayMillis = (1000.0 / fps);
     public final static long chunkTimeInMillis = 30 * 1000; //30 seconds for chunk of video
     public static final String SEPARATOR = "-";
@@ -13,7 +13,7 @@ public class Config {
     public static final String FFMPEGPATH = "/usr/bin/ffmpeg";
     public static final String FFPROBEPATH = "/usr/bin/ffprobe";
 
-    public static final String DEFAULTCAMERAIP = "192.168.1.10";
+    public static final String DEFAULTCAMERAIP = "192.168.43.1";
     public static final int DEFAULTCAMERAPORT = 8080;
     public static final String DEFAULTCAMERAID = "1";
 
