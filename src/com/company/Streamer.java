@@ -28,6 +28,7 @@ public class Streamer {
         lastFrame = new Mat();
         this.fps = fps;
         this.cameraIP = cameraIP;
+        this.cameraPort = cameraPort;
         rf = RedisFrames.getDefaultRedisFrames();
     }
 
