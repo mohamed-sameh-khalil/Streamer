@@ -9,12 +9,12 @@ import java.net.URLConnection;
 public class Streamer {
     static{ nu.pattern.OpenCV.loadLocally(); }
 
-    private VideoCapture vc;
-    private Mat lastFrame;
-    private double fps;
-    private RedisFrames rf;
-    private String cameraIP;
-    private int cameraPort;
+    private final VideoCapture vc;
+    private final Mat lastFrame;
+    private final double fps;
+    private final RedisFrames rf;
+    private final String cameraIP;
+    private final int cameraPort;
 
 
     public Streamer(String cameraIP, int cameraPort){
@@ -24,7 +24,6 @@ public class Streamer {
     public Streamer(String cameraIP, int cameraPort, double fps){
         String URL = getURL(cameraIP,cameraPort);
         vc = new VideoCapture(URL);
-
         lastFrame = new Mat();
         this.fps = fps;
         this.cameraIP = cameraIP;
@@ -43,10 +42,13 @@ public class Streamer {
 
     public void stream(){
         while(true) {
-            readFrame();
-            System.out.println(lastFrame.size());
-            handleFrame();
-            //Utils.FPSWait(fps);
+            // TODO is time being wasted because we recreate the lambda every time even though its the same thing
+            //  or is java smart enough?
+            Timer.executeAndWaitFPS(fps, ()->{
+                readFrame();
+                System.out.println(lastFrame.size());
+                handleFrame();
+            });
         }
     }
 

@@ -35,7 +35,7 @@ public class VideoCollector {
                 processBatch();
             }
             try {
-                timer.executeAndWaitFPS(fps, this::addingAFrame);
+                Timer.executeAndWaitFPS(fps, this::addingAFrame);
             } catch (RedisFrames.FrameNotExist fne) {
                 //TODO add an action to occur when multiple frames are missed
                 // maybe exit the function??

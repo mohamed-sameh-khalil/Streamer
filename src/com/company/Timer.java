@@ -5,7 +5,6 @@ import jdk.jshell.execution.Util;
 public class Timer {
     private long timestamp;
     private long moddedTimestamp;
-    private long delayTimestamp; //this is used to calculate correct wait time
     private final long chunkTimeInMillis;
 
     public interface Executor{
@@ -32,11 +31,11 @@ public class Timer {
         resetTimeStamp();
         resetModdedTimeStamp();
     }
-    public void executeAndWaitFPS(double fps, Executor executor){
+    public static void executeAndWaitFPS(double fps, Executor executor){
         //this a wrapper to implement accurate waits
-        prepareWaitTimer();
+        long start = System.currentTimeMillis();
         executor.execute();
-        waitCorrect(fps);
+        waitCorrect(start, fps);
     }
     private void resetTimeStamp(){
         timestamp = System.currentTimeMillis();
@@ -44,16 +43,10 @@ public class Timer {
     private void resetModdedTimeStamp() {
         moddedTimestamp = (System.currentTimeMillis() / chunkTimeInMillis) * chunkTimeInMillis;
     }
-    private void prepareWaitTimer(){
-        resetDelayTimeStamp();
-    }
-    private void waitCorrect(double fps){
-        long now = System.currentTimeMillis();
+    private static void waitCorrect(long start, double fps){
+        long end = System.currentTimeMillis();
         long duration = Utils.FPSToMillis(fps);
-        long waitTime = delayTimestamp + duration - now;
+        long waitTime = start + duration - end;
         if(waitTime > 0)Utils.MilliWait(waitTime);
-    }
-    private void resetDelayTimeStamp(){
-        delayTimestamp = System.currentTimeMillis();
     }
 }
