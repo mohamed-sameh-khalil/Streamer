@@ -7,6 +7,9 @@ public class Utils {
         double time = 1000 * 1.0 / fps;
         MilliWait((long)time);
     }
+    public static long FPSToMillis(double fps){
+        return (long)(1000 / fps);
+    }
     public static void MilliWait(long time){
         try {
             Thread.sleep(time);

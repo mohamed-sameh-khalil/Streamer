@@ -11,21 +11,23 @@ import static com.company.Config.ORIGINALVIDEOEXTENSION;
 public class VideoHandlerImp implements VideoHandler {
     static{ nu.pattern.OpenCV.loadLocally(); }
     @Override
-    public void WriteFrames(ArrayList<String> sMats, String fileName) {
-
-        new VideoHandlerThread(sMats, fileName).write();
-
+    public void writeFrames(ArrayList<String> sMats, String fileName) {
+        writeFrames(sMats, fileName,Config.chunkTimeInMillis);
+    }
+    @Override
+    public void writeFrames(ArrayList<String> sMats, String fileName, long timeInMillis) {
+        new VideoHandlerThread(sMats, fileName, timeInMillis).write();
     }
     private static class VideoHandlerThread extends Thread {
         ArrayList<String> sMats;
         VideoWriter videoWriter;
         String fileName;
         double fps;
-        private VideoHandlerThread(ArrayList<String> sMats, String fileName){
+        private VideoHandlerThread(ArrayList<String> sMats, String fileName, long duration){
             this.sMats = sMats;
             this.fileName = fileName;
             //TODO is this right, calculating fps based on the average of the chunk
-            this.fps = Utils.calculateFPS(sMats.size(), Config.chunkTimeInMillis / 1000);
+            this.fps = Utils.calculateFPS(sMats.size(), duration / 1000.0);
         }
         public void write(){
             start();
