@@ -35,7 +35,9 @@ public class RedisFrames {
     public void setLastFrameForCamera(Mat img, String cameraIP, String cameraID){
         String key = getKeyForCamera(cameraIP,cameraID);
         String value = ImageProcessor.matToString(img);
-        jedis.setex(key, ExpirationTimeInSeconds, value);
+        //TODO i stopped the expirable setting of the key to check if we gain in performance
+//        jedis.setex(key, ExpirationTimeInSeconds, value);
+        jedis.set(key, value);
 
     }
 
