@@ -13,8 +13,11 @@ import java.io.IOException;
 
 public class S3Uploader {
     public static void upload(String objectname, String path){
-        Regions clientRegion = Regions.US_EAST_2;
-        String bucketName = "gpvideosbucket";
+//        Regions clientRegion = Regions.US_EAST_2;
+//        String bucketName = "gpvideosbucket";
+
+        Regions clientRegion = Regions.EU_WEST_3;
+        String bucketName = "streamer-s3-storage";
         try {
             //This code expects that you have AWS credentials set up
             AmazonS3 s3Client = AmazonS3ClientBuilder.standard()

@@ -5,58 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="473a4139-38f8-42e9-9d4c-c2d02788e0cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_amazonaws_aws_java_sdk_core_1_11_928.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_amazonaws_aws_java_sdk_kms_1_11_928.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_amazonaws_aws_java_sdk_s3_1_11_928.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_amazonaws_jmespath_java_1_11_928.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_6_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_6_7_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_cbor_2_6_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bramp_ffmpeg_ffmpeg_0_6_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_6_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_clients_2_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_lz4_lz4_java_1_4_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_modelmapper_modelmapper_0_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openpnp_opencv_3_4_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_simple_1_7_30.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_snappy_snappy_java_1_1_7_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_3_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_ion_ion_java_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/Compressor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/Config.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/ImageProcessor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/KafkaFrameReader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/KafkaFrameWriter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/RedisFrames$FrameNotExist.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/RedisFrames.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/S3Uploader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/Streamer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/Utils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/VideoCollector$FrameStreamStopped.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/VideoCollector.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/VideoHandlerImp$VideoHandlerThread.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/VideoHandlerImp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/company/interfaces/VideoHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Web Server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Test Web Server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Web Server/public/out.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Test Web Server/public/out.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Web Server/stream.html" beforeDir="false" afterPath="$PROJECT_DIR$/Test Web Server/stream.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ImageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/S3Uploader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/S3Uploader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Streamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Streamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/VideoHandlerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/VideoHandlerImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/company/Compressor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/Compressor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/company/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/company/S3Uploader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/S3Uploader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/company/Streamer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/Streamer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/company/VideoCollector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/VideoCollector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/company/VideoHandlerImp$VideoHandlerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/VideoHandlerImp$VideoHandlerThread.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
-  <component name="RunManager" selected="Application.VideoCollector">
+  <component name="RunManager" selected="Application.Streamer">
     <configuration name="Streamer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Streamer" />
       <module name="Streamer" />
@@ -107,8 +69,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.VideoCollector" />
         <item itemvalue="Application.Streamer" />
+        <item itemvalue="Application.VideoCollector" />
       </list>
     </recent_temporary>
   </component>

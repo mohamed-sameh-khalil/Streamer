@@ -46,7 +46,7 @@ public class VideoHandlerImp implements VideoHandler {
             writeUnCompressedVideo();
             compress();
             upload();
-            deleteTmpFiles();
+            //deleteTmpFiles();
         }
         private void writeUnCompressedVideo(){
             //TODO make a constant preset frame size instead of depending on the first frame in the sequence??

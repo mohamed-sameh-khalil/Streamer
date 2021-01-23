@@ -41,15 +41,15 @@ public class Streamer {
     }
 
     public void stream(){
-        while(true) {
+        System.out.println("Started Streamer");
+        while(true)
             // TODO is time being wasted because we recreate the lambda every time even though its the same thing
             //  or is java smart enough?
             Timer.executeAndWaitFPS(fps, ()->{
                 readFrame();
-                System.out.println(lastFrame.size());
+                //System.out.println(lastFrame.size());
                 handleFrame();
             });
-        }
     }
 
     private void handleFrame(){
