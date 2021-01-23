@@ -19,4 +19,6 @@ public class Config {
 
     public static final String ORIGINALVIDEOEXTENSION = ".avi";
     public static final String COMPRESSEDVIDEOEXTENSION = ".mp4";
+
+    public static final long FileServiceTimeDelay = chunkTimeInMillis;
 }

@@ -13,6 +13,9 @@ import java.io.IOException;
 
 public class S3Uploader {
     public static void upload(String objectname, String path){
+        upload(objectname, new File(path));
+    }
+    public static void upload(String objectname, File file){
         Regions clientRegion = Regions.US_EAST_2;
         String bucketName = "gpvideosbucket";
         try {
@@ -22,7 +25,7 @@ public class S3Uploader {
                     .build();
 
             // Upload a file as a new object with ContentType
-            PutObjectRequest request = new PutObjectRequest(bucketName, objectname, new File(path));
+            PutObjectRequest request = new PutObjectRequest(bucketName, objectname, file);
             ObjectMetadata metadata = new ObjectMetadata();
             metadata.setContentType("video/mp4");
             request.setMetadata(metadata);
