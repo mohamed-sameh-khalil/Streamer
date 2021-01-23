@@ -1,7 +1,9 @@
 
 notes.txt
 videos
-
+*.class
+*.avi
+*.mp4
 # the following was copied from here https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
 
 # User-specific stuff
