@@ -55,7 +55,8 @@ public class Streamer {
     private void handleFrame(){
         //TODO create a new thread to write frames to redis/kafka?
         // currently just write it in the same thread
-        rf.setLastFrameForCamera(lastFrame, cameraIP, Config.DEFAULTCAMERAID);
+        if(!lastFrame.empty())
+            rf.setLastFrameForCamera(lastFrame, cameraIP, Config.DEFAULTCAMERAID);
     }
 
     public static void main(String[] args){
