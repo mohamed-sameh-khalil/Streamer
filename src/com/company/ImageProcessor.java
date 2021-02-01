@@ -73,7 +73,7 @@ public class ImageProcessor {
         return frame;
     }
 
-    static String serializeMat(Mat mat){
+    private static String serializeMat(Mat mat){
         int n = (int)mat.size().height;
         int m = (int)mat.size().width;
         int bufferSize = mat.channels() * mat.cols() * mat.rows();
@@ -92,7 +92,7 @@ public class ImageProcessor {
 
         return null;
     }
-    static Mat deserializeMat(String json){
+    static private Mat deserializeMat(String json){
         try {
             ObjectMapper mapper = new ObjectMapper();
             SerializableImage si = mapper.readValue(json, SerializableImage.class);

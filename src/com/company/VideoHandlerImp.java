@@ -54,8 +54,10 @@ public class VideoHandlerImp implements VideoHandler {
             int fourcc = VideoWriter.fourcc('M','J','P','G');
             String OriginalVideoFileName = getOriginalFileName(fileName);
             videoWriter = new VideoWriter(OriginalVideoFileName, fourcc, fps, sz);
-            for(String sMat : sMats) {
-                videoWriter.write(ImageProcessor.stringToMat(sMat));
+            for(int i = 0; i < sMats.size(); i++){
+                videoWriter.write(ImageProcessor.stringToMat(sMats.get(i)));
+                sMats.set(i, null);
+
             }
             videoWriter.release();
         }
