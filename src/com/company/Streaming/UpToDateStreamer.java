@@ -1,14 +1,14 @@
 package com.company.Streaming;
 
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 
 import java.util.concurrent.locks.ReentrantLock;
 
 public class UpToDateStreamer {
-    static{
-        nu.pattern.OpenCV.loadLocally();
-    }
+    static  {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
+
     private Mat lastFrame;
     private final ReentrantLock lock = new ReentrantLock();
     VideoCapture vc;

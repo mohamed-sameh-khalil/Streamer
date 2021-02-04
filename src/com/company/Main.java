@@ -1,12 +1,16 @@
 package com.company;
 
 
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.highgui.HighGui;
+
 import java.io.File;
 
 import static org.opencv.imgcodecs.Imgcodecs.imread;
 
 public class Main {
-    static{ nu.pattern.OpenCV.loadLocally(); }
+    static  {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 
     public static void main(String[] args) {
         RedisFrames rf = RedisFrames.getDefaultRedisFrames();

@@ -8,7 +8,7 @@ import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
 public class Streamer {
-    static{ nu.pattern.OpenCV.loadLocally(); }
+    static  {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 
     private Mat lastFrame;
     private final double fps;

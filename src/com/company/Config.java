@@ -10,11 +10,11 @@ public class Config {
     public static final int RedisServerPort = 6379;
     public static final int DEFAULTEXPIRATIONSECONDS = 1;
 
-//    public static final String FFMPEGPATH = "/usr/bin/ffmpeg";
-//    public static final String FFPROBEPATH = "/usr/bin/ffprobe";
+    public static final String FFMPEGPATH = "/usr/bin/ffmpeg";
+    public static final String FFPROBEPATH = "/usr/bin/ffprobe";
 
-    public static final String FFMPEGPATH = "C:\\FFMPEG-PATH\\ffmpeg";
-    public static final String FFPROBEPATH = "C:\\FFMPEG-PATH\\ffprobe";
+//    public static final String FFMPEGPATH = "C:\\FFMPEG-PATH\\ffmpeg";
+//    public static final String FFPROBEPATH = "C:\\FFMPEG-PATH\\ffprobe";
 
     public static final String DEFAULTCAMERAIP = "192.168.43.1";
     public static final int DEFAULTCAMERAPORT = 8080;

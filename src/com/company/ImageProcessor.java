@@ -1,10 +1,9 @@
 package com.company;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.highgui.HighGui;
-import org.opencv.imgcodecs.Imgcodecs;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -16,7 +15,8 @@ import java.io.IOException;
 import java.util.Base64;
 
 public class ImageProcessor {
-    static{ nu.pattern.OpenCV.loadLocally(); }
+    static  {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
+
     private static class SerializableImage{
         public byte[] img;
         public int height;
