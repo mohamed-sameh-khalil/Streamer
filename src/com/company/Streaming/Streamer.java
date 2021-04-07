@@ -1,20 +1,21 @@
-package com.company;
+package com.company.Streaming;
 
+import com.company.Config;
+import com.company.RedisFrames;
+import com.company.Timer;
+import com.company.Utils;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.videoio.VideoCapture;
-
-import java.net.URL;
-import java.net.URLConnection;
 
 public class Streamer {
-    static{ nu.pattern.OpenCV.loadLocally(); }
+    static  {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 
-    private final VideoCapture vc;
-    private final Mat lastFrame;
+    private Mat lastFrame;
     private final double fps;
     private final RedisFrames rf;
     private final String cameraIP;
     private final int cameraPort;
+    private final UpToDateStreamer upToDateStreamer;
 
 
     public Streamer(String cameraIP, int cameraPort){
@@ -22,22 +23,18 @@ public class Streamer {
     }
 
     public Streamer(String cameraIP, int cameraPort, double fps){
-        String URL = getURL(cameraIP,cameraPort);
-        vc = new VideoCapture(URL);
-        lastFrame = new Mat();
-        this.fps = fps;
         this.cameraIP = cameraIP;
         this.cameraPort = cameraPort;
+        this.fps = fps;
+
+        String URL = Utils.getURL(cameraIP,cameraPort);
+        this.upToDateStreamer = new UpToDateStreamer(URL);
+
         rf = RedisFrames.getDefaultRedisFrames();
     }
 
-    private String getURL(String cameraIP, int cameraPort){
-        //TODO move this function to utils
-        return "rtsp://" + cameraIP + ":" + cameraPort + "/h264_ulaw.sdp";
-    }
-
-    private void readFrame(){
-        vc.read(lastFrame);
+    private void readUpToDateFrame(){
+        lastFrame = upToDateStreamer.getLastFrame();
     }
 
     public void stream(){
@@ -46,8 +43,7 @@ public class Streamer {
             // TODO is time being wasted because we recreate the lambda every time even though its the same thing
             //  or is java smart enough?
             Timer.executeAndWaitFPS(fps, ()->{
-                readFrame();
-                //System.out.println(lastFrame.size());
+                readUpToDateFrame();
                 handleFrame();
             });
     }
@@ -55,8 +51,9 @@ public class Streamer {
     private void handleFrame(){
         //TODO create a new thread to write frames to redis/kafka?
         // currently just write it in the same thread
-        if(!lastFrame.empty())
+        if(lastFrame != null && !lastFrame.empty()) {
             rf.setLastFrameForCamera(lastFrame, cameraIP, Config.DEFAULTCAMERAID);
+        }
     }
 
     public static void main(String[] args){

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+gnome-terminal -- redis-server
+
+gnome-terminal -- java -Djava.library.path=../opencv/_build/lib -jar Streamer.jar 
+
+gnome-terminal -- java -Djava.library.path=../opencv/_build/lib -jar VideoCollector.jar 
+
+cd Streamer-Web-Server-main/
+
+gnome-terminal -- npm start

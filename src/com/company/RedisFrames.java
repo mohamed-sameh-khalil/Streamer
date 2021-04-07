@@ -1,5 +1,6 @@
 package com.company;
 
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import redis.clients.jedis.Jedis;
 
@@ -52,5 +53,5 @@ public class RedisFrames {
         }
         throw new FrameNotExist();
     }
-    static{ nu.pattern.OpenCV.loadLocally(); }
+    static  {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 }

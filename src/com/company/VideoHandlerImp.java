@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.interfaces.VideoHandler;
+import org.opencv.core.Core;
 import org.opencv.core.Size;
 import org.opencv.videoio.VideoWriter;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import static com.company.Config.ORIGINALVIDEOEXTENSION;
 
 public class VideoHandlerImp implements VideoHandler {
-    static{ nu.pattern.OpenCV.loadLocally(); }
+    static  {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
     @Override
     public void writeFrames(ArrayList<String> sMats, String fileName) {
         writeFrames(sMats, fileName,Config.chunkTimeInMillis);
@@ -45,7 +46,7 @@ public class VideoHandlerImp implements VideoHandler {
             System.out.println("FPS: " + fps);
             writeUnCompressedVideo();
             compress();
-            upload();
+            //upload();
             //deleteTmpFiles();
         }
         private void writeUnCompressedVideo(){
@@ -54,8 +55,10 @@ public class VideoHandlerImp implements VideoHandler {
             int fourcc = VideoWriter.fourcc('M','J','P','G');
             String OriginalVideoFileName = getOriginalFileName(fileName);
             videoWriter = new VideoWriter(OriginalVideoFileName, fourcc, fps, sz);
-            for(String sMat : sMats) {
-                videoWriter.write(ImageProcessor.stringToMat(sMat));
+            for(int i = 0; i < sMats.size(); i++){
+                videoWriter.write(ImageProcessor.stringToMat(sMats.get(i)));
+                sMats.set(i, null);
+
             }
             videoWriter.release();
         }

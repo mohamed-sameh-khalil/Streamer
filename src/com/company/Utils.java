@@ -27,4 +27,8 @@ public class Utils {
         new File(fileName).delete();
     }
 
+    public static String getURL(String cameraIP, int cameraPort){
+        return "rtsp://" + cameraIP + ":" + cameraPort + "/h264_ulaw.sdp";
+    }
+
 }
