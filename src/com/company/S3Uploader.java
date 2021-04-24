@@ -2,22 +2,19 @@ package com.company;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.File;
-import java.io.IOException;
 
 public class S3Uploader {
     public static void upload(String objectname, String path){
-//        Regions clientRegion = Regions.US_EAST_2;
-//        String bucketName = "gpvideosbucket";
-
-        Regions clientRegion = Regions.EU_WEST_3;
-        String bucketName = "streamer-s3-storage";
+        Dotenv dotenv = Dotenv.configure().directory(System.getProperty("user.dir") + "/").load();
+        String clientRegion = dotenv.get("AWS_REGION");
+        String bucketName = dotenv.get("AWS_BUCKET_NAME");
         try {
             //This code expects that you have AWS credentials set up
             AmazonS3 s3Client = AmazonS3ClientBuilder.standard()

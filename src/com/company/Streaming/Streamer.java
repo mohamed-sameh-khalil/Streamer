@@ -13,21 +13,23 @@ public class Streamer {
     private Mat lastFrame;
     private final double fps;
     private final RedisFrames rf;
+    private final int cameraID;
     private final String cameraIP;
-    private final int cameraPort;
+    private final String cameraPort;
     private final UpToDateStreamer upToDateStreamer;
 
 
-    public Streamer(String cameraIP, int cameraPort){
-        this(cameraIP, cameraPort, Config.fps);
+    public Streamer(int cameraID, String cameraIP, String cameraPort){
+        this(cameraID, cameraIP, cameraPort, Config.fps);
     }
 
-    public Streamer(String cameraIP, int cameraPort, double fps){
+    public Streamer(int cameraID, String cameraIP, String cameraPort, double fps){
+        this.cameraID = cameraID;
         this.cameraIP = cameraIP;
         this.cameraPort = cameraPort;
         this.fps = fps;
 
-        String URL = Utils.getURL(cameraIP,cameraPort);
+        String URL = Utils.getURL(cameraIP, cameraPort);
         this.upToDateStreamer = new UpToDateStreamer(URL);
 
         rf = RedisFrames.getDefaultRedisFrames();
@@ -52,12 +54,7 @@ public class Streamer {
         //TODO create a new thread to write frames to redis/kafka?
         // currently just write it in the same thread
         if(lastFrame != null && !lastFrame.empty()) {
-            rf.setLastFrameForCamera(lastFrame, cameraIP, Config.DEFAULTCAMERAID);
+            rf.setLastFrameForCamera(lastFrame, cameraIP, Integer.toString(cameraID));
         }
-    }
-
-    public static void main(String[] args){
-        Streamer streamer = new Streamer(Config.DEFAULTCAMERAIP, Config.DEFAULTCAMERAPORT);
-        streamer.stream();
     }
 }

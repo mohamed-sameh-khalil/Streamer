@@ -24,7 +24,6 @@ public class VideoCollector {
         this.timer = new Timer();
         this.cameraID = cameraID;
         this.cameraIP = cameraIP;
-
     }
 
     public void collect() throws FrameStreamStopped {
@@ -64,10 +63,9 @@ public class VideoCollector {
         return cameraIP + SEPARATOR + cameraID + SEPARATOR + timer.getModdedTimestamp();
     }
 
-    public static void main(String[] args) {
-        VideoCollector videoCollector = new VideoCollector(DEFAULTCAMERAIP, DEFAULTCAMERAID);
-        videoCollector.collect();
-
-    }
+//    public static void main(String[] args) {
+//        VideoCollector videoCollector = new VideoCollector(DEFAULTCAMERAIP, DEFAULTCAMERAID);
+//        videoCollector.collect();
+//    }
 
 }

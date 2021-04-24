@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 
@@ -107,7 +106,7 @@ public class ImageProcessor {
     }
 
 //  For Testing
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
 //        Mat src = Imgcodecs.imread("5.jpg");
 //        String s = matToString(src);
 //        Mat frame = stringToMat(s);
@@ -116,5 +115,5 @@ public class ImageProcessor {
 //        imageCodecs.imwrite("size.jpg", matrix);
 //        HighGui.imshow("Original Image", frame);
 //        HighGui.waitKey(0);
-    }
+//    }
 }
