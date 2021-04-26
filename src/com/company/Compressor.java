@@ -6,7 +6,6 @@ import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 
 import static com.company.Config.*;
-import static com.company.Utils.deleteFile;
 
 public class Compressor {
     private FFmpeg ffmpeg;

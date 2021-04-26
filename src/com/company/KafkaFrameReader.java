@@ -4,8 +4,6 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.opencv.core.Mat;
 import org.opencv.highgui.HighGui;
@@ -13,7 +11,6 @@ import org.opencv.highgui.HighGui;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 public class KafkaFrameReader {
     KafkaConsumer<String, String> consumer;

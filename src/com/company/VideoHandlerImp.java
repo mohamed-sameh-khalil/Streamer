@@ -44,10 +44,11 @@ public class VideoHandlerImp implements VideoHandler {
 
         private void combineFramesToCompressedVideo(){
             System.out.println("FPS: " + fps);
-            writeUnCompressedVideo();
-            compress();
-            //upload();
-            //deleteTmpFiles();
+
+            if (Config.WRITEUNCOMPRESSEDVIDEO) writeUnCompressedVideo();
+            if (Config.WRITECOMPRESSEDVIDEO) compress();
+            if (Config.UPLOAD) upload();
+            if (Config.DELETETEMPFILES) deleteTmpFiles();
         }
         private void writeUnCompressedVideo(){
             //TODO make a constant preset frame size instead of depending on the first frame in the sequence??
