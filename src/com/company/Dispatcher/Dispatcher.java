@@ -1,5 +1,6 @@
 package com.company.Dispatcher;
 
+import com.company.Config;
 import com.company.Streaming.Streamer;
 import com.company.VideoCollector;
 
@@ -22,7 +23,7 @@ public class Dispatcher {
         new Thread(()-> {
             try {
                 this.refresh();
-                TimeUnit.MINUTES.sleep(5);
+                TimeUnit.MINUTES.sleep(Config.DISPATCHERREFRESHMINUTS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

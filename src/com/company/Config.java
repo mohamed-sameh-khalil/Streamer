@@ -9,6 +9,7 @@ public class Config {
     public static final String RedisServerIP = "127.0.0.1";
     public static final int RedisServerPort = 6379;
     public static final int DEFAULTEXPIRATIONSECONDS = 1;
+    public static final int DISPATCHERREFRESHMINUTS = 5;
 
     public static final String FFMPEGPATH = "/usr/bin/ffmpeg";
     public static final String FFPROBEPATH = "/usr/bin/ffprobe";
