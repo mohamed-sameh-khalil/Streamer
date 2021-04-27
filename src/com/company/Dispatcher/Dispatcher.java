@@ -21,11 +21,13 @@ public class Dispatcher {
     public void startDispatcher(){
         // opens a new thread for dispatcher
         new Thread(()-> {
-            try {
-                this.refresh();
-                TimeUnit.MINUTES.sleep(Config.DISPATCHERREFRESHMINUTS);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            while (true) {
+                try {
+                    this.refresh();
+                    TimeUnit.MINUTES.sleep(Config.DISPATCHERREFRESHMINUTS);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }).start();
     }
