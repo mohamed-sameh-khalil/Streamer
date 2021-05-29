@@ -33,9 +33,8 @@ public class RedisFrames {
         return new RedisFrames(RedisServerIP, RedisServerPort, DEFAULTEXPIRATIONSECONDS);
     }
 
-    public void setLastFrameForCamera(Mat img, String cameraIP, String cameraID){
+    public void setLastFrameForCamera(String value, String cameraIP, String cameraID){
         String key = getKeyForCamera(cameraIP, cameraID);
-        String value = ImageProcessor.matToString(img);
         jedis.setex(key, ExpirationTimeInSeconds, value);
     }
 

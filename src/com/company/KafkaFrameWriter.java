@@ -4,7 +4,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.opencv.core.Mat;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Properties;
 
@@ -20,8 +20,7 @@ public class KafkaFrameWriter {
         this.producer =  new KafkaProducer<String, String>(properties);
     }
 
-    public void writeFrame(Mat frame){
-        String encodedFrame = ImageProcessor.matToString(frame);
+    public void writeFrame(String encodedFrame){
         ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>("frames",encodedFrame);
         this.producer.send(producerRecord);
         this.producer.flush();

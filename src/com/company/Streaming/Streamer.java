@@ -1,6 +1,7 @@
 package com.company.Streaming;
 
 import com.company.Config;
+import com.company.KafkaFrameWriter;
 import com.company.RedisFrames;
 import com.company.Timer;
 import com.company.Utils;
@@ -17,7 +18,8 @@ public class Streamer {
     private final String cameraIP;
     private final String cameraPort;
     private final UpToDateStreamer upToDateStreamer;
-
+    KafkaFrameWriter frameWriter = new KafkaFrameWriter();
+    Timer kafkaTimer = new Timer(200);
 
     public Streamer(int cameraID, String cameraIP, String cameraPort){
         this(cameraID, cameraIP, cameraPort, Config.fps);
@@ -54,7 +56,14 @@ public class Streamer {
         //TODO create a new thread to write frames to redis/kafka?
         // currently just write it in the same thread
         if(lastFrame != null && !lastFrame.empty()) {
-            rf.setLastFrameForCamera(lastFrame, cameraIP, Integer.toString(cameraID));
+            String value = ImageProcessor.matToString(lastFrame);
+            rf.setLastFrameForCamera(value, cameraIP, Integer.toString(cameraID));
+            if (kafkaTimer.enoughTimePassed()){
+                String timeStamp = Long.toString(System.currentTimeMillis());
+                String message = Integer.toString(cameraID) + "." + timeStamp + "." + value;
+                frameWriter.writeFrame(message);
+                kafkaTimer.reset();
+            }
         }
     }
 }
