@@ -1,8 +1,12 @@
 package com.company.Streaming;
 
+import com.company.Config;
+import com.company.Timer;
+import com.company.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
+
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -20,6 +24,7 @@ public class UpToDateStreamer {
             while(true) {
                 cnt++;
                 vc.read(frame);
+                Utils.FPSWait(Config.fps);
                 lock.lock();
                 try {
                     lastFrame = frame;

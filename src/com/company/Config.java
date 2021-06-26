@@ -30,4 +30,7 @@ public class Config {
     public static final boolean WRITECOMPRESSEDVIDEO = true;
     public static final boolean UPLOAD = true;
     public static final boolean DELETETEMPFILES = true;
+
+    public static final boolean STREAMFROMVIDEO = true;
+    public static final String VIDEOPATH = "/home/darth/Downloads/DD.mp4";
 }

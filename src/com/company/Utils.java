@@ -2,6 +2,9 @@ package com.company;
 
 import java.io.File;
 
+import static com.company.Config.STREAMFROMVIDEO;
+import static com.company.Config.VIDEOPATH;
+
 public class Utils {
     public static void FPSWait(double fps){
         double time = 1000 * 1.0 / fps;
@@ -28,7 +31,12 @@ public class Utils {
     }
 
     public static String getURL(String cameraIP, String cameraPort){
-        return "rtsp://" + cameraIP + ":" + cameraPort + "/h264_ulaw.sdp";
+        if(STREAMFROMVIDEO){
+            return VIDEOPATH;
+        }
+        else{
+            return "rtsp://" + cameraIP + ":" + cameraPort + "/h264_ulaw.sdp";
+        }
     }
 
 }
