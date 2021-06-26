@@ -1,5 +1,6 @@
 package com.company.Streaming;
 
+import com.company.ImageProcessor;
 import com.company.Config;
 import com.company.KafkaFrameWriter;
 import com.company.RedisFrames;
