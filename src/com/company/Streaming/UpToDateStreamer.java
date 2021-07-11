@@ -1,14 +1,14 @@
 package com.company.Streaming;
 
 import com.company.Config;
-import com.company.Timer;
 import com.company.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 
-
 import java.util.concurrent.locks.ReentrantLock;
+
+import static com.company.Config.STREAMFROMVIDEO;
 
 public class UpToDateStreamer {
     static  {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
@@ -24,7 +24,9 @@ public class UpToDateStreamer {
             while(true) {
                 cnt++;
                 vc.read(frame);
-                Utils.FPSWait(Config.fps);
+                if(STREAMFROMVIDEO) {
+                    Utils.FPSWait(Config.fps); // TODO: comment when live stream from cam
+                }
                 lock.lock();
                 try {
                     lastFrame = frame;

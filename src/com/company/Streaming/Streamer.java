@@ -1,12 +1,6 @@
 package com.company.Streaming;
 
-import com.company.ImageProcessor;
-import com.company.Config;
-import com.company.ImageProcessor;
-import com.company.KafkaFrameWriter;
-import com.company.RedisFrames;
-import com.company.Timer;
-import com.company.Utils;
+import com.company.*;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
@@ -21,7 +15,7 @@ public class Streamer {
     private final String cameraPort;
     private final UpToDateStreamer upToDateStreamer;
     KafkaFrameWriter frameWriter = new KafkaFrameWriter();
-    Timer kafkaTimer = new Timer(500);
+    Timer kafkaTimer = new Timer(1000);
 
     public Streamer(int cameraID, String cameraIP, String cameraPort){
         this(cameraID, cameraIP, cameraPort, Config.fps);

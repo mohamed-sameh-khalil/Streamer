@@ -1,6 +1,8 @@
 package com.company;
 
 
+//import com.company.Streaming.Streamer;
+
 import com.company.Dispatcher.Dispatcher;
 import org.opencv.core.Core;
 
@@ -13,12 +15,12 @@ public class Main {
         dispatcher.startDispatcher();
 
 //        new Thread(()->{
-//            Streamer streamer = new Streamer(7, "192.168.1.100", "8080");
+//            Streamer streamer = new Streamer(1009, "DD", "8080");
 //            streamer.stream();
 //        }).start();
 //
 //        new Thread(()->{
-//            VideoCollector videoCollector = new VideoCollector("192.168.1.101", "5");
+//            VideoCollector videoCollector = new VideoCollector("DD", "1009");
 //            videoCollector.collect();
 //        }).start();
 //
@@ -30,5 +32,6 @@ public class Main {
 //            HighGui.imshow("Camera ID = " + 7, mat);
 //            HighGui.waitKey(10);
 //        }
+//         Glamourse
     }
 }

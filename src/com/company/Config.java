@@ -29,8 +29,8 @@ public class Config {
     public static final boolean WRITEUNCOMPRESSEDVIDEO = true;
     public static final boolean WRITECOMPRESSEDVIDEO = true;
     public static final boolean UPLOAD = true;
-    public static final boolean DELETETEMPFILES = true;
+    public static final boolean DELETETEMPFILES = false;
 
-    public static final boolean STREAMFROMVIDEO = true;
-    public static final String VIDEOPATH = "/home/darth/Downloads/DD.mp4";
+    public static final boolean STREAMFROMVIDEO = false;
+    public static final String VIDEOPATH = "/home/nourmat/Downloads/DD.mp4";
 }
